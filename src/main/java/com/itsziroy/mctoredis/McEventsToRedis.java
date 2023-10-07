@@ -1,8 +1,8 @@
 package com.itsziroy.mctoredis;
 
 import com.itsziroy.bukkitredis.BukkitRedisPlugin;
-import com.itsziroy.bukkitredis.events.player.PlayerJoinEvent;
-import com.itsziroy.bukkitredis.events.player.PlayerQuitEvent;
+import com.itsziroy.bukkitredis.events.entity.PlayerDiedEvent;
+import com.itsziroy.bukkitredis.events.player.PlayerEvent;
 import com.itsziroy.mctoredis.listeners.BukkitListener;
 import com.itsziroy.mctoredis.listeners.DiscordSRVListener;
 import github.scarsz.discordsrv.DiscordSRV;
@@ -37,8 +37,8 @@ public final class McEventsToRedis extends JavaPlugin {
             DiscordSRV.api.subscribe(new DiscordSRVListener(discordSRV, bukkitRedis));
 
             // Register Event Listener for bukkit redis
-            BukkitRedisPlugin.getEventManager().registerCallback(PlayerJoinEvent.class, bukkitListener::onPlayerJoin);
-            BukkitRedisPlugin.getEventManager().registerCallback(PlayerQuitEvent.class, bukkitListener::onPlayerQuit);
+            BukkitRedisPlugin.getEventManager().registerCallback(PlayerEvent.class, bukkitListener::onPlayerEvent);
+            BukkitRedisPlugin.getEventManager().registerCallback(PlayerDiedEvent.class, bukkitListener::onPlayerDeath);
         }
 
         getServer().getPluginManager().registerEvents(new BukkitListener(this), this);
