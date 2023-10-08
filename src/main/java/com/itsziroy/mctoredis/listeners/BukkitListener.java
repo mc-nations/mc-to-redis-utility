@@ -3,6 +3,7 @@ package com.itsziroy.mctoredis.listeners;
 
 import com.itsziroy.bukkitredis.events.entity.PlayerDiedEvent;
 import com.itsziroy.bukkitredis.events.player.PlayerEvent;
+import com.itsziroy.mctoredis.EventKeys;
 import com.itsziroy.mctoredis.McEventsToRedis;
 
 import com.itsziroy.mctoredis.payload.discordsrv.DiscordUser;
@@ -24,7 +25,7 @@ public class BukkitListener implements Listener {
         Player player = original.getEntity();
 
         String discord_id = this.plugin.getDiscordSRV().getAccountLinkManager().getDiscordId(player.getUniqueId());
-        event.put("discord_user", new DiscordUser(discord_id));
+        event.put(EventKeys.KEY_DISCORD_USER, new DiscordUser(discord_id));
     }
 
     public void onPlayerEvent(PlayerEvent<?> event) {
@@ -33,6 +34,6 @@ public class BukkitListener implements Listener {
         Player player = original.getPlayer();
 
         String discord_id = this.plugin.getDiscordSRV().getAccountLinkManager().getDiscordId(player.getUniqueId());
-        event.put("discord_user", new DiscordUser(discord_id));
+        event.put(EventKeys.KEY_DISCORD_USER, new DiscordUser(discord_id));
     }
 }

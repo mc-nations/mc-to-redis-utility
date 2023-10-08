@@ -26,11 +26,15 @@ repositories {
     flatDir {
         dirs '../bukkit-redis/build/libs'
     }
+    flatDir {
+        dirs '../shrine-revive/build/libs'
+    }
 }
 
 dependencies {
     compileOnly "org.spigotmc:spigot-api:1.20-R0.1-SNAPSHOT"
     compileOnly 'com.discordsrv:discordsrv:1.26.2'
+    compileOnly "com.itsziroy:shrine-revive:1.0-SNAPSHOT"
     implementation "com.itsziroy:bukkit-redis:1.0-SNAPSHOT"
 }
 

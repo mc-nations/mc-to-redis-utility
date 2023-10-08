@@ -6,3 +6,4 @@ depend:
   - BukkitRedis
 softdepend:
   - DiscordSRV
+  - ShrineRevive
