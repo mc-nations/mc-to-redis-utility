@@ -1,14 +1,18 @@
 package com.itsziroy.mctoredis.listeners;
 
+import com.itsziroy.bukkitredis.events.SimplePlayer;
 import com.itsziroy.mctoredis.EventKeys;
 import com.itsziroy.mctoredis.McEventsToRedis;
 import com.itsziroy.mctoredis.payload.discordsrv.DiscordUser;
 import com.itsziroy.mctoredis.payload.discordsrv.MinecraftUser;
 import com.itsziroy.mctoredis.payload.shrinerevive.TokenUser;
 import com.itsziroy.shrinerevive.events.ShrineOfflinePlayerBaseEvent;
+import com.itsziroy.shrinerevive.events.ShrineRevivedPlayerEvent;
 import com.itsziroy.shrinerevive.events.ShrineTokenPickedUpEvent;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
+
+import java.util.UUID;
 
 public class ShrineListener{
     McEventsToRedis plugin;
@@ -21,6 +25,13 @@ public class ShrineListener{
         OfflinePlayer tokenPlayer = event.getTokenPlayer();
 
         String discord_id = this.plugin.getDiscordSRV().getAccountLinkManager().getDiscordId(tokenPlayer.getUniqueId());
+        event.put(EventKeys.KEY_DISCORD_USER, new DiscordUser(discord_id));
+    }
+
+    public void onShrineRevivedPlayerEvent(ShrineRevivedPlayerEvent event) {
+        SimplePlayer simplePlayer = event.getSimplePlayer();
+
+        String discord_id = this.plugin.getDiscordSRV().getAccountLinkManager().getDiscordId(UUID.fromString(simplePlayer.id()));
         event.put(EventKeys.KEY_DISCORD_USER, new DiscordUser(discord_id));
     }
 

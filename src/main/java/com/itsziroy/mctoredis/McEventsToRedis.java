@@ -8,6 +8,7 @@ import com.itsziroy.mctoredis.listeners.DiscordSRVListener;
 import com.itsziroy.mctoredis.listeners.ShrineListener;
 import com.itsziroy.shrinerevive.ShrineRevive;
 import com.itsziroy.shrinerevive.events.ShrineOfflinePlayerBaseEvent;
+import com.itsziroy.shrinerevive.events.ShrineRevivedPlayerEvent;
 import com.itsziroy.shrinerevive.events.ShrineTokenPickedUpEvent;
 import github.scarsz.discordsrv.DiscordSRV;
 import org.bukkit.Bukkit;
@@ -51,6 +52,7 @@ public final class McEventsToRedis extends JavaPlugin {
 
             if(shrineRevive != null) {
                 getLogger().info("Hooked into ShrineRevive");
+                BukkitRedisPlugin.getEventManager().registerCallback(ShrineRevivedPlayerEvent.class, shrineListener::onShrineRevivedPlayerEvent);
                 BukkitRedisPlugin.getEventManager().registerCallback(ShrineOfflinePlayerBaseEvent.class, shrineListener::onShrineOfflineBaseEvent);
                 BukkitRedisPlugin.getEventManager().registerCallback(ShrineTokenPickedUpEvent.class, shrineListener::onShrineTokenPickedUp);
             }
