@@ -7,6 +7,10 @@ import com.itsziroy.mctoredis.EventKeys;
 import com.itsziroy.mctoredis.McEventsToRedis;
 
 import com.itsziroy.mctoredis.payload.discordsrv.DiscordUser;
+import github.scarsz.discordsrv.util.MemUtil;
+import github.scarsz.discordsrv.util.PlayerUtil;
+import net.dv8tion.jda.api.entities.User;
+import net.dv8tion.jda.internal.entities.UserById;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
@@ -35,5 +39,6 @@ public class BukkitListener implements Listener {
 
         String discord_id = this.plugin.getDiscordSRV().getAccountLinkManager().getDiscordId(player.getUniqueId());
         event.put(EventKeys.KEY_DISCORD_USER, new DiscordUser(discord_id));
+
     }
 }
