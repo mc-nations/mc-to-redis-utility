@@ -1,6 +1,6 @@
 package com.itsziroy.mctoredis.listeners;
 
-import com.itsziroy.bukkitredis.events.SimplePlayer;
+import com.itsziroy.bukkitredis.events.player.MinecraftPlayer;
 import com.itsziroy.mctoredis.EventKeys;
 import com.itsziroy.mctoredis.McEventsToRedis;
 import com.itsziroy.mctoredis.payload.discordsrv.DiscordUser;
@@ -29,9 +29,9 @@ public class ShrineListener{
     }
 
     public void onShrineRevivedPlayerEvent(ShrineRevivedPlayerEvent event) {
-        SimplePlayer simplePlayer = event.getSimplePlayer();
+        MinecraftPlayer minecraftPlayer = event.getMinecraftPlayer();
 
-        String discord_id = this.plugin.getDiscordSRV().getAccountLinkManager().getDiscordId(UUID.fromString(simplePlayer.id()));
+        String discord_id = this.plugin.getDiscordSRV().getAccountLinkManager().getDiscordId(UUID.fromString(minecraftPlayer.id()));
         event.put(EventKeys.KEY_DISCORD_USER, new DiscordUser(discord_id));
     }
 

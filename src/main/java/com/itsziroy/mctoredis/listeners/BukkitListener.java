@@ -5,12 +5,7 @@ import com.itsziroy.bukkitredis.events.entity.PlayerDiedEvent;
 import com.itsziroy.bukkitredis.events.player.PlayerEvent;
 import com.itsziroy.mctoredis.EventKeys;
 import com.itsziroy.mctoredis.McEventsToRedis;
-
 import com.itsziroy.mctoredis.payload.discordsrv.DiscordUser;
-import github.scarsz.discordsrv.util.MemUtil;
-import github.scarsz.discordsrv.util.PlayerUtil;
-import net.dv8tion.jda.api.entities.User;
-import net.dv8tion.jda.internal.entities.UserById;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
